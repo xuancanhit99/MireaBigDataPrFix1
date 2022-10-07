@@ -1,15 +1,15 @@
 import pandas as pd
 import matplotlib
-
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 
+# Я использую данные о доле рынка компьютерных операционных систем с 2013 по 2022 год
 # 1
 operating_systems_raw_data = pd.read_csv("operating-systems.csv", sep=';')
-
 # 2
-# # Вывести информацию о данных при помощи методов .info(), .head(). Проверить данные на наличие пустых значений
+# Вывести информацию о данных при помощи методов .info(), .head().
+# Проверить данные на наличие пустых значений
 print(operating_systems_raw_data.head())
 print(operating_systems_raw_data.info())
 
