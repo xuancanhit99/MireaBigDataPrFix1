@@ -1,10 +1,11 @@
 import pandas as pd
 import matplotlib
+
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Я использую данные о доле рынка компьютерных операционных систем с 2013 по 2022 год
+# Использование данных о доле рынка компьютерных операционных систем с 2013 по 2022 год
 # 1
 operating_systems_raw_data = pd.read_csv("operating-systems.csv", sep=';')
 # 2
@@ -21,7 +22,6 @@ print(operating_systems_raw_data)
 # operating_systems_raw_data['Date'] = (pd.to_datetime(operating_systems_raw_data['Date'], format='%b %y')).dt.year
 ###
 
-#
 # # ---3---
 # # Построить столбчатую диаграмму (.bar)
 # labels = list(map(str, list(operating_systems_raw_data['Year']))) # метка
@@ -145,8 +145,8 @@ print(operating_systems_raw_data)
 # plt.yticks(np.arange(0, 101, 10), size=10)
 # plt.ylabel('Percent (%)', fontsize=12)
 # plt.boxplot(operating_systems_data_for_boxplot,
-#             meanline=True,# average line
-#             showmeans=True,# show average line
+#             meanline=True,  # average line
+#             showmeans=True,  # show average line
 #             labels=labels,
 #             widths=0.4)
 # plt.show()
@@ -245,3 +245,4 @@ ax5.set_title("Others")
 fig.tight_layout(pad=5.0)
 
 plt.show()
+# ---7 End---
