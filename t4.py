@@ -38,20 +38,27 @@ insurance_raw_data = pd.read_csv("insurance.csv", sep=',')
 # charges_mode = sts.mode(insurance_raw_data['charges'], keepdims=False)
 # charges_med = np.median(insurance_raw_data['charges'])
 #
+# # Мода: Это значение, которое наиболее часто встречается в выборке.
 # print('Мода индекса массы тела: ', bmi_mode)
+# # Медиана:
+# # Для нечетного центральный элемент в отсортированном массиве (sort(x)[(n+1)/2]).
+# # Для четного: среднее значение двух центральных элементов в отсортированном массиве ((sort(x)[n/2]+ sort(x)[(n+1)/2])/2).
 # print('Медиана индекса массы тела: ', bmi_med)
+# # Среднее. Сумма значений всех элементов выборки, деленное на их количество.
 # print('Среднее индекса массы тела: ', round(bmi_mean, 1))
 #
 # print('Мода расходов: ', charges_mode)
 # print('Медиана расходов: ', charges_med)
 # print('Среднее расходов: ', round(charges_mean, 1))
-#
+
 # # ------
-#
 # # вычисляем меры разброса индекса массы тела
-# bmi_scope = insurance_raw_data['bmi'].max() - insurance_raw_data['bmi'].min()  # размах
-# bmi_std = insurance_raw_data['bmi'].std()  # стандартное отклонение
-# bmi_iqr = sts.iqr(insurance_raw_data['bmi'], interpolation='midpoint')  # межквартильный размах
+# # Размах: Разница между максимальным и минимальным значением выборки
+# bmi_scope = insurance_raw_data['bmi'].max() - insurance_raw_data['bmi'].min()
+# # Стандартное отклонение: Это корень из дисперсии
+# bmi_std = insurance_raw_data['bmi'].std()
+# # Межквартильный размах (IQR): Разница между Q3 (75%) и Q1 (25%), это ширина интервала, который содержит 50% данных.
+# bmi_iqr = sts.iqr(insurance_raw_data['bmi'], interpolation='midpoint')
 #
 # print('Размах индекса массы тела: ', bmi_scope)
 # print('Cтандартное отклонение индекса массы тела: ', round(bmi_std, 2))
@@ -65,7 +72,6 @@ insurance_raw_data = pd.read_csv("insurance.csv", sep=',')
 # print('Размах расходов: ', round(charges_scope, 2))
 # print('Cтандартное отклонение расходов: ', round(charges_std, 2))
 # print('Межквартильный размах расходов: ', round(charges_iqr, 2))
-#
 # # -------
 
 # labels_name_central_trend = ['Мода', 'Медиана', 'Среднее']
@@ -118,23 +124,23 @@ insurance_raw_data = pd.read_csv("insurance.csv", sep=',')
 # plt.show()
 
 # ---6---
-## n = 20
-## n = 50
+n = 20  # длина выборки
+# n = 50
 # n = 200
-# samples_num = 300
-# t = tuple(insurance_raw_data['bmi'])
-# mean_list = []
-#
-# for i in range(samples_num):
-#     data_sample = random.sample(t, n)
-#     mean_list.append(np.mean(data_sample))
-#
-# sns.displot(mean_list, kde=True)
-# print('Среднее распределения: ', np.mean(mean_list))
-# print('Стандартное отклонение распределеия: ', st.pstdev(mean_list))
+samples_num = 300 # Количество выборок
+t = tuple(insurance_raw_data['bmi'])
+mean_list = []
+
+for i in range(samples_num):
+    data_sample = random.sample(t, n)
+    mean_list.append(np.mean(data_sample))
+
+sns.displot(mean_list, kde=True)
+print('Среднее распределения: ', np.mean(mean_list))
+print('Стандартное отклонение распределеия: ', st.pstdev(mean_list))
 
 
-# # ---6 end---
+# ---6 end---
 # mean_charges = []
 # mean_bmi = []
 #
@@ -169,11 +175,11 @@ insurance_raw_data = pd.read_csv("insurance.csv", sep=',')
 # )
 
 
-qq_plot_charges = sns.jointplot(
-    x=np.random.normal(size=1338),
-    y=insurance_raw_data['charges'],
-    kind='reg',
-    color='midnightblue',
-    line_kws={'lw': 1, 'color': 'black'}
-)
+# qq_plot_charges = sns.jointplot(
+#     x=np.random.normal(size=1338),
+#     y=insurance_raw_data['charges'],
+#     kind='reg',
+#     color='midnightblue',
+#     line_kws={'lw': 1, 'color': 'black'}
+# )
 
